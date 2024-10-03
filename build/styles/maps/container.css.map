@@ -1,0 +1,1 @@
+{"version":3,"sources":["container.scss"],"names":[],"mappings":"AAAA,WACI,iBACA,WACA","file":"../container.css","sourcesContent":[".container { \r\n    max-width: 1024px;\r\n    width: 100%;\r\n    margin: 0 auto;\r\n}"]}
