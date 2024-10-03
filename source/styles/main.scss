@@ -1,0 +1,120 @@
+@use "./config/reset";
+@use "./config/container";
+@use './config/var';
+@use 'sass:math';
+@use 'sass:color';
+
+@function converterPixeleParaEm($valorPixel,$padraoPixel: 16px){
+    @return math.div($valorPixel,$padraoPixel)+em;
+}
+
+@mixin listStyleNone(){
+    list-style: none;
+}
+
+/*=====================================================*/
+
+
+body {
+    background-color: var.$corDefundo;
+}
+
+h2{
+    font-size: converterPixeleParaEm(32px);
+}
+h4{
+    font-size: converterPixeleParaEm(20px);
+}
+
+header {
+    background-color: var.$corPrincipal;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+
+        .menu {
+            display: flex;
+
+            li {
+                font-weight: bold;
+                margin-left: 24px;
+                // list-style: none;
+                @include listStyleNone();
+
+                a {
+                    color: var.$corTag_a;
+                    text-decoration:none;
+                    
+                }
+            }
+        }        
+    }
+}
+
+
+// ================================
+section {
+    padding: 56px 0;
+
+    .products {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(3, 32.66%);
+        column-gap: 1%;
+        row-gap: 4%;
+        width: 100%;
+
+        .product-item {
+            // list-style: none;
+            @include listStyleNone();
+
+            img {
+                width: 100%;
+                border-radius: 16px;
+            }
+
+            .product-button {
+                display: block;
+                background-color: darken(var.$corButton, 15%);
+                color: #fff;
+                text-align: center;
+                padding: 8px 0;
+                border-radius: 8px;
+                margin-top: 8px;
+                text-decoration: none;
+
+                    &:hover {
+                            background-color: lighten( var.$corButtonHover, 15%);
+                            
+                    }
+            }
+        }
+    }
+}
+
+@media screen {
+        @media (max-width:1023px){
+            .container {
+                max-width: 80%;
+                .products {
+                    grid-template-columns: repeat(2, 48.5%);
+                    column-gap: 3%;
+                }
+            }
+        @media (max-width: 767px){
+            .products {
+                display: block;
+                .product-item  {
+                    margin-bottom: 32px;
+                }
+            }
+            
+        }    
+    }
+}
